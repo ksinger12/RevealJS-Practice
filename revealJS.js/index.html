@@ -1,0 +1,591 @@
+<!doctype html>
+<style>
+	.scrollbar {
+		height: 670px;
+		overflow: auto;
+	}
+</style>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+		<!-- Theme used for chalkboard-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="/examples/assets/fredericton-start.jpg">
+					<h1>Protecting from ZBY1</h1>
+					<small>Team R: Joseph Grosso, Andrew Farley, Kyle Singer, Andrew Fryer</small>
+				</section>
+				<section>
+					<h1>Challenge</h1>
+					<ul>
+						<li>Goal: Monitor the spread of ZBY1 in the given Ontario High School</li>
+						<li>Determine the probability of students and faculty contracting the virus</li>
+						<li>Show the correlations that would cause virus transmission</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Stakeholders</h1>
+					<ul>
+						<li class="fragment">Center for Disease Control and Prevention</li>
+						<li class="fragment">Faculty (Teachers and Teaching Assistants)</li>
+						<li class="fragment">Students</li>
+						<li class="fragment">Parents of Students</li>
+						<li class="fragment">Family Friends</li>
+						<li class="fragment">Children and Parents of Faculty</li>
+						<li class="fragment">Ontario (government and citizens)</li>
+						<li class="fragment">Canada (government and citizens)</li>
+					</ul>
+				</section>
+				<section data-background-iframe="https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/2017-canadian-renewable-power/province/canadas-renewable-power-landscape-2017-energy-market-analysis-new-brunswick.html" data-background-interactive>
+					<div style="position: left; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<h2>NB 2016 Energy</h2>
+						<p>Looking at the graph we can see how the types of energy in NB have changed over the last few years</p>
+					</div>
+				</section>
+				<section>
+					<section>
+						<h3>We can also view this data as a line graph</h3>
+						<small>Capacity in MWh Percentage</small>
+						<canvas data-chart="line">
+							Year, 2005, 2015, 2016
+							Oil & Diesel, 37.6, 35.2, 35.2
+							Natural Gas, 8.0, 7.7, 7.7
+							Coal, 12.8, 10.8, 10.8
+							Nuclear, 16.1, 15.6, 15.6
+							Biomass, 3.0, 2.8, 2.8
+							Wind, 0.0, 6.5, 6.5
+							Hydro, 22.5, 21.3, 21.3
+						</canvas>
+					</section>
+					<section>
+						<h3>Or a pie chart</h3>
+						<canvas data-chart="pie">
+							Energy, Oil and Diesel, Natural Gas, Coal, Nuclear, Biomass, Wind, Hydro
+							Data, 3.9, 15.5, 20.7, 29.9, 3.6, 5.6, 20.6
+						</canvas>
+					</section>
+				</section>
+				<section>
+					<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+						<h1>Our Process</h1>
+						<div class="r-hstack justify-center">
+							<div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+							<div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+							<div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+						</div>
+					</section>
+					<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+						<h2>Design Process</h2>
+						<div class="r-hstack justify-center" >
+							<div data-id="box1" data-auto-animate-delay="0" style="background: cyan; width: 50px; height: 30px; margin: 5px;"></div>
+							<div data-id="box2" data-auto-animate-delay="0.1" style="background: magenta; width: 50px; height: 30px;  margin: 5px;"></div>
+							<div data-id="box3" data-auto-animate-delay="0.2" style="background: yellow; width: 50px; height: 30px;  margin: 5px;"></div>
+						</div>
+						<img src="examples/assets/design_process_exp.png">
+					</section>
+					<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+						<div style="clear: both">
+							<div class="r-stack" style="float: left">
+								<div data-id="box1" style="background: cyan; width: 100px; height: 100px; border-radius: 200px;"></div>
+								<div data-id="box2" style="background: magenta; width: 65px; height: 65px; border-radius: 200px;"></div>
+								<div data-id="box3" style="background: yellow; width: 30px; height: 30px; border-radius: 200px;"></div>
+							</div>
+							<h2>Development Process</h2>
+						</div>
+						<ul>
+							<li>Divided the project into three sections:
+								<ul>
+									<li>Algorithm Simulation</li>
+									<li>Probability Functions</li>
+									<li>Visualizations</li>
+								</ul>
+							</li>
+							<li>Integrate different pieces as a team</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Technology</h1>
+					</section>
+					<section>
+						<ul style="list-style-type: none;">
+							<li>
+								<h4>Pandas</h4>
+								<small>Reads excel file into Python environment</small>
+							</li>
+							<li>
+								<h4>Numpy</h4>
+								<small>Allows algorithm to be efficient with memory and run fast computations</small>
+							</li>
+							<li>
+								<h4>Plotly</h4>
+								<small>Powerful visualizaitons of probabilities of infection</small>
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Our Solution</h1>
+					</section>
+					<section>
+						<h2>Simulation/Algorithm</h2>
+						<ul>
+							<li>
+								Iterates over the 6 possible times
+								<ul><li>Periods 1-2, Lunch, Periods 3-4, Clubs</li></ul>
+							</li>
+							<li>
+								Custon PeopleQuery class
+								<ul><li>Interface with and store data</li></ul>
+							</li>
+							<li>
+								Utilizes probability functions on each iteration
+								<ul><li>Computes likelihood of infection</li></ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Probabilities</h2>
+						<ul>
+							<li>
+								Probabilities are divided based on the activity
+								<ul><li>Class, Lunch, Extra Curriculars, Transitions</li></ul>
+							</li>
+							<li>
+								Each calculation accounts for:
+								<ul>
+									<li>Carefulness, Exposure, Time, Supervisors</li>
+								</ul>
+							</li>
+							<li>
+								Additional things considered:
+								<ul>
+									<li>Based on COVID-19 restrictions</li>
+									<li>Social distancing and mask use</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Output</h2>
+						<ul>
+							<li>
+								Two Outputs:
+								<ul>
+									<li>Graphs displaying the relationship of each person with another</li>
+									<ul><li>Shows probability of contracting the virus over time</li></ul>
+									<li>Text file containing the final probabilities after 1 day</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Our Code</h1>
+					</section>
+					<section>
+						<h3>probabilities.py</h3>
+						<small>Lines: 5-52</small>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|2-3,6-9|41-44"><script type="text/template">
+							# Additional protection that comes with wearing a mask (~15%), social distancing (~20% - low because we're assuming this can only be maintained to such an extent)
+							wearing_mask = 1 - 0.15
+							social_distancing = 1 - 0.2
+	
+							# On/Off Switch for protection measures
+							protection_measures = {
+								"on": False,
+								"off": False
+							}
+	
+							# Lenth of exposure (incubation periods)
+							#   -Regular -> calling this ~100% of exposure - 45 minutes
+							#   -Transition -> ~11% of exposure compare to regular - 5 minutes -> (5/45) = ~0.11
+							time_of_period = {
+								"Regular": 1,
+								"Transition": 0.11
+							}
+	
+							# This descirbes the probability that an infected person infects another given person.
+							# The factors are:
+							#   -num_people  - the number of people involved in the event
+							#   -exposure    - the natural risk factor relating to the activity that takes place during the event
+							#   -carefulness - the safety precautions that the involved individuals take during the event
+	
+							def probability_of_infection(num_people, exposure, carefulness, mask, distancing):
+								probability = exposure * (1 - carefulness) * r0 / num_people
+	
+								if mask and distancing:
+									return probability*wearing_mask*social_distancing
+								elif mask:
+									return probability*wearing_mask
+								elif distancing:
+									return probability*social_distancing
+								return probability
+	
+							def probability_of_infection_in_class(num_students_in_class):
+								carefulness = 0.8  # high because high supervision
+								exposure = 0.8  # high because lots of students in small space
+								return probability_of_infection(num_students_in_class, exposure*time_of_period["Regular"], carefulness, protection_measures["on"], protection_measures["on"])
+	
+							def probability_of_infection_in_class_teacher_and_ta():
+								carefulness = 0.9  # high because staff are careful
+								exposure = 0.6  # high because working together directly
+								return probability_of_infection(2, exposure*time_of_period["Regular"], carefulness, protection_measures["on"], protection_measures["on"])
+						</script></code></pre>
+					</section>
+					<section>
+						<h3>algorithm.py</h3>
+						<small>Lines: 1-27, 134-235</small>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|2-7|10,18-28|90-94"><script type="text/template">
+							#Lines: 1-27
+							from parseData import getData
+							from probabilities import *
+							import numpy as np
+							import enum
+							import math
+							import copy
+
+							#The possible times of day where events can happen
+							times = ['p1', 'p2', 'lunch', 'p3', 'p4', 'extra']
+
+							'''
+							timeToPeriod:
+								time - a time from the times array defined above
+								
+								output - the index of a class period for use with the classes field of the Person class
+							'''
+							def timeToPeriod(time):
+								if time == times[0]:
+									return 0
+								elif time == times[1]:
+									return 1
+								elif time == times[3]:
+									return 2
+								elif time == times[4]:
+									return 3
+								else:
+									return None
+
+							#Lines: 134-235
+							class PeopleQuery:
+								def __init__(self):
+									self.students = []
+									self.teachers = []
+									self.tas = []
+									self.people = []
+									
+								#Prints all current data stored in the instance of a peoplequery object
+								def print_people(self):
+									print('Students')
+									for i in self.students:
+										print(i)
+									print('------------------------------------------------------------------')
+									print('Teachers')
+									for i in self.teachers:
+										print(i)
+									print('------------------------------------------------------------------')
+									print('TAs')
+									for i in self.tas:
+										print(i)
+								
+								def max_prob(self):
+									return max([p.infected for p in self.people if p.infected < 1])
+									
+								#Setters
+								def setStudents(self, data):
+									self.students = data
+									
+								def setTeachers(self, data):
+									self.teachers = data
+									
+								def setTAs(self, data):
+									self.tas = data
+									
+								def setPeople(self, data):
+									self.people = data
+								
+								#Returns all students in a given class at a specified time
+								def getStudentsInClass(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									return [p for p in self.students if p.classes[period] == className]
+								
+								#Returns all students in a given class at the next time slot
+								def getStudentsInClassNext(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									if period == 0 or period == 2:
+										return [p for p in self.students if p.classes[period+1] == className]
+									else:
+										return []
+								
+								#Returns all student in a given grade
+								def getStudentsInGrade(self, grade):
+									return [p for p in self.students if p.grade == grade]
+								
+								#Returns all teachers in a given class
+								def getTeachersInClass(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									return [p for p in self.teachers if p.classes[period] == className]
+								
+								#Returns all TAs in a given class at a given time
+								def getTAsInClass(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									return [p for p in self.tas if p.classes[period] == className]
+								
+								#Returns all TAs in a given class at the next time slot
+								def getTAsInClassNext(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									if (period == 0 or period == 2):
+										return [p for p in self.tas if p.classes[period] == className]
+									else:
+										return []
+								
+								#Returns all TAs and teachers in a given class at a given time
+								def getWorkersInClass(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									return [p for p in self.teachers+self.tas if p.classes[period] == className]
+								
+								#Returns all TAs and teachers in a given class at the next timeslot
+								def getWorkersInClassNext(self, className, time):
+									period = timeToPeriod(time)
+									if (period == None):
+										return []
+									if (period == 0 or period == 2):
+										return [p for p in self.teachers+self.tas if p.classes[period] == className]
+									else:
+										return []
+									
+								#Returns all students in a given club
+								def getAllInExtraCurricular(self, club):
+									return [p for p in self.students if p.clubs != None and club in p.clubs]
+						</script></code></pre>
+					</section>
+					<section>
+						<h3>graph_experiments.py</h3>
+						<small>Lines: 1-10, 94-143</small>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4|9-11|19-27"><script type="text/template">
+							#Lines: 1-10
+							import plotly.graph_objects as go
+							import numpy as np
+							import networkx as nx
+							from itertools import product
+							import random
+							from math import cos, sin, sqrt
+
+							from algorithm import Person
+							from algorithm import getDataForVisualization
+							from algorithm import PType
+													
+							#Lines: 94-103
+							def displayGraph(list_of_graphs):
+							for G in list_of_graphs:
+
+								edge_x = []
+								edge_y = []
+								for edge in G.edges():
+									x0, y0 = G.nodes(data=True)[edge[0]]['pos']
+									x1, y1 = G.nodes[edge[1]]['pos']
+									edge_x.append(x0)
+									edge_x.append(x1)
+									edge_x.append(None)
+									edge_y.append(y0)
+									edge_y.append(y1)
+									edge_y.append(None)
+
+								edge_trace = go.Scatter(
+									x=edge_x, y=edge_y,
+									line=dict(width=0.5, color='#888'),
+									hoverinfo='none',
+									mode='lines')
+
+								node_x = []
+								node_y = []
+								for node in G.nodes():
+									x, y = G.nodes[node]['pos']
+									node_x.append(x)
+									node_y.append(y)
+
+								node_trace = go.Scatter(
+									x=node_x, y=node_y,
+									mode='markers',
+									hoverinfo='text',
+									marker=dict(
+										showscale=True,
+										# colorscale options
+										#'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
+										#'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
+										#'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
+										colorscale='Picnic',
+										reversescale=False,
+										color=[],
+										size=10,
+										colorbar=dict(
+											thickness=15,
+											title='% Chance of Infection',
+											xanchor='left',
+											titleside='right'
+										),
+										line_width=2))
+						</script></code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Assumptions</h2>
+					<ul>
+						<li>
+							Teaching assistants are near graduation or are post-grad students
+							<ul><li>Average age ~22</li></ul>
+						</li>
+						<li>The amount of time exposed effects the probability of being infected</li>
+						<li>Extra-curriculars are outside the normal schedule but are the same length as a class</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Missing</h2>
+					<ul>
+						<li>Surface contact leading to contracting the virus</li>
+						<li>Accounting for students in the same family having overlapping risk</li>
+					</ul>
+				</section>
+				<!--<section class="scrollbar">
+					<h2>Next Steps</h2>
+					<ul style="list-style-type: none;">
+						<li>
+							<h4>Phone App</h4>
+							<small>Creating a phone app like the COVID-19 response app to inform</small>
+						</li>
+						<li>
+							<h4>Recommendations</h4>
+							<small>Sharing recommendations of whether to stay home or not if at a high risk of contracting</small>
+						</li>
+						<li>
+							<h4 style="padding-top: 18px;">Risk Analysis</h4>
+							<small>Determining what risk is too much of a risk for students and/or teachers (based on age, health) to do in person schooling</small>
+						</li>
+						<li>
+							<h4 style="padding-top: 18px;">PPE</h4>
+							<small>Simulating the impact of wearing glves and masks to provide recommendations on PPE requirements</small>
+						</li>
+						<li>
+							<h4 style="padding-top: 18px;">Online</h4>
+							<small>Determining when students should be required to attend school virutally</small>
+						</li>
+						<li>
+							<h4>Semester Structure</h4>
+							<small>Optimizing learning and safety by simulating differe semester structures</small>
+						</li>
+					</ul>
+				</section>-->
+				<section>
+				<section data-auto-animate>
+					<h2>Next Steps</h2>
+					<ul style="list-style-type: none;">
+						<li>
+							<h4>Phone App</h4>
+							<small>Creating a phone app like the COVID-19 response app to inform</small>
+						</li>
+						<li>
+							<h4>Recommendations</h4>
+							<small>Sharing recommendations of whether to stay home or not if at a high risk of contracting</small>
+						</li>
+						<li>
+							<h4 style="padding-top: 18px;">Risk Analysis</h4>
+							<small>Determining what risk is too much of a risk for students and/or teachers (based on age, health) to do in person schooling</small>
+						</li>
+						<li>
+							<h4 style="padding-top: 18px;">PPE</h4>
+							<small>Simulating the impact of wearing glves and masks to provide recommendations on PPE requirements</small>
+						</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h2>Next Steps</h2>
+					<ul style="list-style-type: none;">
+						<li>
+							<h4 style="padding-top: 18px;">PPE</h4>
+							<small>Simulating the impact of wearing glves and masks to provide recommendations on PPE requirements</small>
+						</li>
+						<li>
+							<h4 style="padding-top: 18px;">Online</h4>
+							<small>Determining when students should be required to attend school virutally</small>
+						</li>
+						<li>
+							<h4>Semester Structure</h4>
+							<small>Optimizing learning and safety by simulating differe semester structures</small>
+						</li>
+					</ul>
+				</section>
+				</section>
+				<section data-background-image="http://www.tourismfredericton.ca/sites/default/files/field/image/fredericton.jpg">
+					<h1>Questions?</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				chart: {
+					defaults: {
+						global: {
+							title: { fontColor: "#FFF" },
+							legend: {
+								labels: { fontColor: "#FFF" },
+							},
+						},
+						scale: {
+							scaleLabel: { fontColor: "#FFF" },
+							gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+							ticks: { fontColor: "#FFF" },
+						}
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]},
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]},
+				},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart, RevealChalkboard ]
+			});
+		</script>
+	</body>
+</html>
